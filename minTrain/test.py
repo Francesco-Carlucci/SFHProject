@@ -20,8 +20,10 @@ def calculate_video_results(output_buffer, video_id, test_results, class_names):
             'label': class_names[int(locs[i])],
             'score': float(sorted_scores[i])
         })
-
-    test_results['results'][video_id.item()] = video_results
+    if type(video_id) is str:
+        test_results['results'][video_id] = video_results
+    else:
+        test_results['results'][video_id.item()] = video_results
 
 
 def test(data_loader, model, opt, class_names):

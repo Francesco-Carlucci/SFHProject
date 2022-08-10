@@ -156,8 +156,8 @@ if __name__ == '__main__':
         # for i in range(opt.begin_epoch, opt.begin_epoch + 10):
         if not opt.no_train:
             adjust_learning_rate(optimizer, i, opt)
-            #train_epoch(i, train_loader, model, criterion, optimizer, opt,
-            #            train_logger, train_batch_logger)
+            train_epoch(i, train_loader, model, criterion, optimizer, opt,
+                        train_logger, train_batch_logger)
             state = {
                 'epoch': i,
                 'arch': opt.arch,
@@ -189,7 +189,7 @@ if __name__ == '__main__':
             ToTensor(opt.norm_value), norm_method
         ])
         # temporal_transform = LoopPadding(opt.sample_duration, opt.downsample)
-        temporal_transform = TemporalRandomCrop(opt.sample_duration, opt.downsample)
+        temporal_transform = TemporalCenterCrop(opt.sample_duration, opt.downsample)
         target_transform = VideoID()
 
         test_data = get_test_set(opt, spatial_transform, temporal_transform,

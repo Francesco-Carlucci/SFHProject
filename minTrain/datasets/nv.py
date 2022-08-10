@@ -116,13 +116,11 @@ def get_video_names_and_annotations(data, subset):
             label = value['annotations']['label']
             if label == '23':
                 n23 += 1
-                print("video aggiunto: ",key)
                 video_names.append(key.split('^')[0])
                 value['annotations']['label']='1'
                 annotations.append(value['annotations'])  # value['annotations']
                 i = 24
             elif label==str(int(i)):
-                print("video aggiunto: ", key)
                 video_names.append(key.split('^')[0])
                 value['annotations']['label'] = '2'
                 annotations.append(value['annotations'])
@@ -245,14 +243,13 @@ class NV(data.Dataset):
 
         if self.temporal_transform is not None:
             frame_indices = self.temporal_transform(frame_indices)
-        #print(path)
+
         clip = self.loader(path, frame_indices, self.modality, self.sample_duration)
         oversample_clip = []
         if self.spatial_transform is not None:
             self.spatial_transform.randomize_parameters()
             clip = [self.spatial_transform(img) for img in clip]
 
-        #print(len(clip))
         im_dim = clip[0].size()[-2:]
         clip = torch.cat(clip, 0).view((self.sample_duration, -1) + im_dim).permute(1, 0, 2, 3)
 

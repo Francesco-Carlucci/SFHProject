@@ -148,7 +148,7 @@ def get_test_set(opt, spatial_transform, temporal_transform, target_transform):
             opt.video_path,
             opt.annotation_path,
             subset,
-            0,
+            1,                                 #INTERO VIDEO
             spatial_transform,
             temporal_transform,
             target_transform,
