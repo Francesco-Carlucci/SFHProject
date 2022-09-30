@@ -1,13 +1,19 @@
 # SFHProject
 
-## minTrain: 
-script dall'articolo per training e test
+## source: 
+script for train and test, and all the functions they use
 
-## online test mediapipe: 
-script che combina mediapipe con il nostro modello allenato, come dovrebbe funzionare nella realtà
+## demoPretrain: 
+shell script to pretrain mobilenet on jester from scratch
 
-## Mediapipe: 
-primi tentativi con la libreria, script per registare video di test
+## demoTest: 
+shell script to test real time our mobilenet model. Use: demoTest-sh  <root path> then:
 
-## BBGen:
-script che usa mediapipe per individuare la mano e ritagliarla. Genera un nuovo dataset a partire da jester
+    - webcam : in order to test with pc webcam
+    - video path : path of the video to test
+
+## requirements:
+list of packets needed with their version. It's possible to set up the environments
+also through:
+
+    conda --name <name> pytorch torchvision cudatoolkit=11.6 numpy opencv matplotlib pillow scipy -c pytorch -c conda-forge
