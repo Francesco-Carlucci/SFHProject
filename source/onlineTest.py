@@ -64,7 +64,6 @@ def load_clf(opt):
     if opt.resume_path:
         print('loading checkpoint {}'.format(opt.resume_path))
         checkpoint = torch.load(opt.resume_path,map_location=torch.device("cpu"))
-        print("checkpoint: ", checkpoint['state_dict'].keys())
         classifier.load_state_dict(checkpoint['state_dict'])
 
     #print('Model 2 \n', classifier)
