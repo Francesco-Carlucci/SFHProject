@@ -12,7 +12,7 @@ dataset of hand gestures, and then fine-tuned through transfer learning on our s
 The code require pytorch and opencv, all the requirements can be found in the requirements.txty file.
 It's possible to set up the environment with conda with:
 
-    conda --name <environment_name> pytorch torchvision cudatoolkit=11.6 numpy opencv matplotlib pillow scipy -c pytorch -c conda-forge
+     conda create --name sfh numpy opencv matplotlib pillow scipy pytorch=1.12.1 torchvision=0.13.1 cudatoolkit=11.6 -c pytorch -c conda-forge
 or using pip and cuda-toolkit 11.6:
 
     pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu116
